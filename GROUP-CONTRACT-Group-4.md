@@ -1,5 +1,5 @@
 S126 HIT237 BUILDING INTERACTIVE SOFTWARE
-1. Group Contract (Group: 10%)
+1. Group Contract (Group: 10%) 
 Assessment 1: Group Contract
 Due Date: refer to Learnline
 Weighting: 10%
@@ -85,3 +85,5 @@ verifiable process you went through in completing this assessment. Your team mus
 collaborate to demonstrate your thought process on Microsoft Teams. Interactions on other
 platforms (WhatsApp, Facebook, Discord, etc.) will not be admitted as evidence of your thought
 process.
+
+test here
