@@ -14,7 +14,7 @@ Section 2: Provisional milestones and checkpoints
 
 1.Key milestones with target dates for each assessment:
 Assessment 1:
-•	26th March: Online meeting to allocate tasks and discuss assessment 2 
+ •	26th March: Online meeting to allocate tasks and discuss assessment 2 
  •	14th April: Complete the runnable Django app
  •	16th April: Submit the repository url with the django app, the ADR .md file, the updated project plan, the contract .md file, the supplementary materials, and the requirements.txt file by 1 pm
 Assessment 4:
