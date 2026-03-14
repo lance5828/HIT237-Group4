@@ -1,9 +1,7 @@
-#Group Contract - Group 4
-************************
-Project Theme: Theme 5. Listening to Nt's Disappearing Animals
+# Group Contract - Group 4
 
-Section 1: Terms and conditions of group work
-*********************************************
+## Project Theme
+**Theme 5: Listening to NT's Disappearing Animals**
 
 ## 1. Group allocation 
 After submitting the assessment, all members will initially receive the same marks based on the overall quality of the submission. However, individual marks may be adjusted if there are significant differences in the contributions of team members. A fair contribution from each member includes attending group meetings and adhering to the agreed schedule. If a member cannot strictly follow the schedule or expects to be late to a meeting, they must notify the team beforehand on the Teams channel.
