@@ -45,6 +45,12 @@ All members agree to follow the university’s academic integrity rules. Any ext
 - **27th May:** Proofread the project plan, the group contract, ADR and the requirement files to make sure they are updated as per assessment 4
 - **28th May:** Submit the repository link with all the commits and `.md` files uploaded by **1 pm**
 
+## 3. Internal chechpoints or review points where the team will assess progress
+
+The group will conduct frequent internal checkpoints to keep the project moving forward. We will have weekly meetings after class or through Microsoft Teams to examine our work and discuss about the upcoming tasks.
+
+During the sessions, everyone will provide an update on the tasks they were given. Github will also be used to track tasks and contributions through commits. Before the project milestones, the group will go over the work together, assess the progress, and ensure that everything is working correctly. This helps the group to maintain organizationand finish the project on time.
+
 ## 4. Integration Points
 
 Since different members may work on different parts of the project, integration points are important to ensure everything works together.
