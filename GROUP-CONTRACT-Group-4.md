@@ -17,10 +17,10 @@ All members agree to follow the university’s academic integrity rules. Any ext
 
 ---
 
-#Section 2: Provisional milestones and checkpoints
+# Section 2: Provisional milestones and checkpoints
 
 
-##1. Key milestones with target dates for each assessment:
+## 1. Key milestones with target dates for each assessment:
 
 ### Assessment 1
 - **26th March:** Online meeting to allocate tasks and discuss assessment 2  
