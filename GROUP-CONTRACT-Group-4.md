@@ -22,7 +22,7 @@ If the group cannot reach an agreement, a simple majority vote will be used to d
 
 If the disagreement continues, the group will notify the problem to the teaching team. This won't happen until the group has attempted to settle the problem among themselves.
 
-## 6. Academic Integrity
+## 5. Academic Integrity
 
 All members agree to follow the university’s academic integrity rules. Any external resources, code examples, or tutorials used during the project will be properly referenced. If AI tools are used to help with code or ideas, the group will make sure everyone understands the code before including it in the project. No one should submit code they do not understand. This ensures that the work is honest and that every group member actually learns from the project.
 
