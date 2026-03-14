@@ -1,4 +1,4 @@
-Group Contract - Group 4
+#Group Contract - Group 4
 ************************
 Project Theme: Theme 5. Listening to Nt's Disappearing Animals
 
@@ -11,8 +11,9 @@ After submitting the assessment, all members will initially receive the same mar
 ## 2. Communication 
 We will use Microsoft Teams as our primary method of communication. Informing members about deadlines, online meetings, and goals will be done via the Teams channel. For coding, we will use VS Code as our IDE and commit changes to our GitHub repository (HIT237 – Group 4). This repository will be used for all assessments.
 
-## 3. Task Ownership and Progress Tracking
-We will divide the project into smaller tasks and track them using GitHub Issues and the project board. Each task will have a person responsible for completing it, but everyone is encouraged to help each other if needed. If someone is falling behind or cannot complete a task, they should inform the group as soon as possible so the work can be reassigned or adjusted.
+
+## 6. Academic Integrity
+All members agree to follow the university’s academic integrity rules. Any external resources, code examples, or tutorials used during the project will be properly referenced. If AI tools are used to help with code or ideas, the group will make sure everyone understands the code before including it in the project. No one should submit code they do not understand. This ensures that the work is honest and that every group member actually learns from the project.
 
 
 Section 2: Provisional milestones and checkpoints
