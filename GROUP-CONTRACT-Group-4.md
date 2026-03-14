@@ -33,3 +33,11 @@ All members agree to follow the university’s academic integrity rules. Any ext
 - **26th May:** Complete the extended Django app and update the ADR files  
 - **27th May:** Proofread the project plan, the group contract, ADR and the requirement files to make sure they are updated as per assessment 4  
 - **28th May:** Submit the repository link with all the commits and `.md` files uploaded by **1 pm**
+
+## 4. Integration Points
+
+Since different members may work on different parts of the project, integration points are important to ensure everything works together.
+- Code will be pushed regularly to the **GitHub repository (HIT237 – Group 4)**.
+- Major features will be merged through **GitHub commits and pull requests**.
+- The group will test the full application after merging new changes to ensure that the system still runs correctly.
+- Before each submission, the team will perform a final integration test to confirm that all features, documentation, and required files are included.
