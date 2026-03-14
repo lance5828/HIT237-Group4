@@ -37,7 +37,7 @@ All members agree to follow the university’s academic integrity rules. Any ext
 ## 4. Integration Points
 
 Since different members may work on different parts of the project, integration points are important to ensure everything works together.
-- Code will be pushed regularly to the **GitHub repository (HIT237 – Group 4)**.
+- Code will be pushed regularly to the **GitHub repository**.
 - Major features will be merged through **GitHub commits and pull requests**.
 - The group will test the full application after merging new changes to ensure that the system still runs correctly.
 - Before each submission, the team will perform a final integration test to confirm that all features, documentation, and required files are included.
