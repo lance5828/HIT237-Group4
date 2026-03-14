@@ -5,9 +5,15 @@ Project Theme: Theme 5. Listening to Nt's Disappearing Animals
 Section 1: Terms and conditions of group work
 *********************************************
 
-Group allocation: After submitting the assessment, all members will initially receive the same marks based on the overall quality of the submission. However, individual marks may be adjusted if there are significant differences in the contributions of team members. A fair contribution from each member includes attending group meetings and adhering to the agreed schedule. If a member cannot strictly follow the schedule or expects to be late to a meeting, they must notify the team beforehand on the Teams channel.
+## 1. Group allocation 
+After submitting the assessment, all members will initially receive the same marks based on the overall quality of the submission. However, individual marks may be adjusted if there are significant differences in the contributions of team members. A fair contribution from each member includes attending group meetings and adhering to the agreed schedule. If a member cannot strictly follow the schedule or expects to be late to a meeting, they must notify the team beforehand on the Teams channel.
 
-Communication: We will use Microsoft Teams as our primary method of communication. Informing members about deadlines, online meetings, and goals will be done via the Teams channel. For coding, we will use VS Code as our IDE and commit changes to our GitHub repository (HIT237 – Group 4). This repository will be used for all assessments.
+## 2. Communication 
+We will use Microsoft Teams as our primary method of communication. Informing members about deadlines, online meetings, and goals will be done via the Teams channel. For coding, we will use VS Code as our IDE and commit changes to our GitHub repository (HIT237 – Group 4). This repository will be used for all assessments.
+
+## 3. Task Ownership and Progress Tracking
+We will divide the project into smaller tasks and track them using GitHub Issues and the project board. Each task will have a person responsible for completing it, but everyone is encouraged to help each other if needed. If someone is falling behind or cannot complete a task, they should inform the group as soon as possible so the work can be reassigned or adjusted.
+
 
 Section 2: Provisional milestones and checkpoints
 *************************************************
