@@ -32,7 +32,6 @@ class ObservationAdmin(admin.ModelAdmin):
     search_fields = ("species__common_name", "species__scientific_name", "location")
     ordering = ("-created_at",)
     readonly_fields = ("created_at", "updated_at")
-    raw_id_fields = ("species", "observer")
 
     def get_queryset(self, request):
         return super().get_queryset(request).select_related("species", "observer")

@@ -13,6 +13,7 @@ class TimeStampedModel(models.Model):
         abstract = True
 
 
+
 class Species(TimeStampedModel):
     class NTClassification(models.TextChoices):
         CRITICALLY_ENDANGERED = "CR", "Critically Endangered"
@@ -22,11 +23,13 @@ class Species(TimeStampedModel):
     category = models.CharField(max_length=120, db_index=True)
     common_name = models.CharField(max_length=255)
     scientific_name = models.CharField(max_length=255, unique=True)
+
     nt_classification = models.CharField(
         max_length=2,
         choices=NTClassification.choices,
         db_index=True,
     )
+
     epbc_classification = models.CharField(max_length=50, blank=True, null=True)
     introduced_status = models.CharField(max_length=80, blank=True, null=True)
     order_name = models.CharField(max_length=120, blank=True, null=True)
@@ -37,11 +40,16 @@ class Species(TimeStampedModel):
     class Meta:
         ordering = ["category", "common_name", "scientific_name"]
         verbose_name_plural = "Species"
-        indexes = [
-            models.Index(fields=["category", "nt_classification"]),
-            models.Index(fields=["common_name"]),
-            models.Index(fields=["scientific_name"]),
-        ]
+
+    def __str__(self):
+        return f"{self.common_name} ({self.scientific_name})"
+
+    def display_name(self):
+        return f"{self.common_name} — {self.scientific_name}"
+
+    def classification_badge(self):
+        return self.get_nt_classification_display()
+
 
 
 class Observation(TimeStampedModel):
@@ -53,19 +61,23 @@ class Observation(TimeStampedModel):
         on_delete=models.PROTECT,
         related_name="observations",
     )
+
     observer = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.PROTECT,
         related_name="observations",
     )
+
     audio_file = models.FileField(upload_to="observations/audio/%Y/%m/")
     location = models.CharField(max_length=200)
+
     confidence_score = models.PositiveSmallIntegerField(
         validators=[
             MinValueValidator(CONFIDENCE_MIN),
             MaxValueValidator(CONFIDENCE_MAX),
         ]
     )
+
     notes = models.TextField(blank=True, default="")
 
     objects = ObservationQuerySet.as_manager()
@@ -74,7 +86,7 @@ class Observation(TimeStampedModel):
         ordering = ["-created_at"]
 
     def __str__(self):
-        return f"{self.species.common_name} at {self.location} by {self.observer}"
+        return f"{self.species.common_name} at {self.location} (by {self.observer})"
 
     def has_notes(self):
         return bool(self.notes and self.notes.strip())
@@ -82,6 +94,6 @@ class Observation(TimeStampedModel):
     def confidence_label(self):
         if self.confidence_score >= 8:
             return "High"
-        if self.confidence_score >= 5:
+        elif self.confidence_score >= 5:
             return "Moderate"
         return "Low"
