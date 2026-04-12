@@ -1,8 +1,10 @@
-*** Architectural Decision Record (ADR) for Views ***
+*** Architectural Decision Record (ADR) for Models ***
 
 # ADR — Anomaly Model
 
 ## Title: Design decisions for the Anomaly model
+
+**Status:** Accepted
 
 **Context:**
 We needed a model to flag unusual observations in the app. I had to decide how it connected to existing models, how severity would be stored, and how to handle deletions.
