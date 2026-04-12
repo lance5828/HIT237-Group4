@@ -1,0 +1,19 @@
+{% extends "core/base.html" %}
+
+{% block title %}Anomalies{% endblock %}
+
+{% block content %}
+<h1>Anomaly Reports</h1>
+
+{% for anomaly in anomalies %}
+    <div class="card">
+        <p><strong>Observation:</strong> {{ anomaly.observation }}</p>
+        <p><strong>Flagged By:</strong> {{ anomaly.flagged_by.username }}</p>
+        <p><strong>Severity:</strong> {{ anomaly.get_severity_display }}</p>
+        <p><strong>Resolved:</strong> {{ anomaly.resolved }}</p>
+        <a href="{% url 'anomaly-detail' anomaly.pk %}" class="btn">View Details</a>
+    </div>
+{% empty %}
+    <p>No anomalies found.</p>
+{% endfor %}
+{% endblock %}
