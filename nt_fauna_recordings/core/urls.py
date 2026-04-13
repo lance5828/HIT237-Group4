@@ -1,5 +1,8 @@
+from turtle import home
+
 from django.urls import path
 from .views import (
+    home,
     SpeciesListView, SpeciesDetailView,
     ObservationListView, ObservationDetailView, ObservationCreateView,
     AnomalyListView, AnomalyDetailView, AnomalyCreateView,
@@ -12,6 +15,7 @@ urlpatterns = [
     path("observations/", ObservationListView.as_view(), name="observation-list"),
     path("observations/create/", ObservationCreateView.as_view(), name="observation-create"),
     path("observations/<int:pk>/", ObservationDetailView.as_view(), name="observation-detail"),
+    path("observations/create/", ObservationCreateView.as_view(), name="observation-create"),
 
     path("anomalies/", AnomalyListView.as_view(), name="anomaly-list"),
     path("anomalies/<int:pk>/", AnomalyDetailView.as_view(), name="anomaly-detail"),
