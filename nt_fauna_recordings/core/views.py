@@ -5,18 +5,6 @@ from django.urls import reverse_lazy
 from .models import Species, Observation, Anomaly
 
 
-def home(request):
-    """
-    Rendering the home page of the NT Fauna Recordings application.
-    
-    Args:
-        request: The HTTP request object.
-        
-    Returns:
-        HttpResponse: Rendered home.html template.
-    """
-    return render(request, "core/home.html")
-
 # -------------------------
 # Species Views
 # -------------------------
@@ -55,7 +43,7 @@ class SpeciesDetailView(DetailView):
 
 class ObservationListView(ListView):
     """
-    Display a paginated list of all observations recorded in the system.
+    Displaying a paginated list of all observations recorded in the system.
     
     Attributes:
         model: The Observation model.
@@ -69,7 +57,7 @@ class ObservationListView(ListView):
 
 class ObservationDetailView(DetailView):
     """
-    Display detailed information about a single observation record.
+    Displaying the detailed information about a single observation record.
     
     Attributes:
         model: The Observation model.
@@ -83,7 +71,7 @@ class ObservationDetailView(DetailView):
 
 class ObservationCreateView(CreateView):
     """
-    Handle creation of new observation records through a form submission.
+    Handling the creation of new observation records through a form submission.
     
     Allows users to record a new observation including species identification,
     observer name, audio file, location, confidence score, and notes.
@@ -105,7 +93,7 @@ class ObservationCreateView(CreateView):
 
 class AnomalyListView(ListView):
     """
-    Display a paginated list of all recorded anomalies in the system.
+    Displaying a paginated list of all recorded anomalies in the system.
     
     Anomalies are flagged observations that require further review or investigation.
     
@@ -121,9 +109,9 @@ class AnomalyListView(ListView):
 
 class AnomalyDetailView(DetailView):
     """
-    Display detailed information about a specific anomaly record.
+    Displaying the detailed information about a specific anomaly record.
     
-    Shows the anomaly details including the associated observation, who flagged it,
+    Showing the anomaly details including the associated observation, who flagged it,
     reason for flagging, and severity level.
     
     Attributes:
@@ -140,8 +128,8 @@ class AnomalyCreateView(CreateView):
     """
     Handling the creation of new anomaly flags through a form submission.
     
-    Allows users to flag an observation as containing an anomaly and provide
-    details such as who flagged it, the reason, and severity level.
+    Allowing our users to flag an observation as containing an anomaly and provide
+    details such as who flagged it, the reason, and the severity level.
     
     Attributes:
         model: The Anomaly model.
