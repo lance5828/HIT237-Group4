@@ -86,7 +86,7 @@ class ObservationCreateView(CreateView):
     template_name = "core/observation_form.html"
     fields = ["species", "observer", "audio_file", "location", "confidence_score", "notes"]
     success_url = reverse_lazy("observation-list")
-
+    
 # -------------------------
 # Anomaly Views
 # -------------------------

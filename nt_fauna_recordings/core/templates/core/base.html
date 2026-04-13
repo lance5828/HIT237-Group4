@@ -159,11 +159,13 @@
     <header>
         <h1>NT Fauna Recordings</h1>
         <nav>
-            <a href="{% url 'home' %}" class="{% if request.path == '/' %}active{% endif %}">Home</a>
-            <a href="{% url 'species-list' %}" class="{% if '/species/' in request.path %}active{% endif %}">Species</a>
-            <a href="{% url 'observation-list' %}" class="{% if '/observations/' in request.path %}active{% endif %}">Observations</a>
-            <a href="{% url 'anomaly-list' %}" class="{% if '/anomalies/' in request.path and request.path != '/anomalies/create/' %}active{% endif %}">Anomalies</a>
-            <a href="{% url 'anomaly-create' %}" class="{% if request.path == '/anomalies/create/' %}active{% endif %}">Report Anomaly</a>
+            
+            <a href="{% url 'species-list' %}">Species</a>
+            <a href="{% url 'observation-list' %}">Observations</a>
+            <a href="{% url 'observation-create' %}">Record Observation</a>
+            <a href="{% url 'anomaly-list' %}">Anomalies</a>
+            <a href="{% url 'anomaly-create' %}">Report Anomaly</a>
+            
         </nav>
     </header>
 
