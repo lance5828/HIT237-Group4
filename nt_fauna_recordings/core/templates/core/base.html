@@ -12,9 +12,19 @@
             color: #222;
         }
 
-        nav {
+        header {
             background-color: #204b57;
+            color: white;
             padding: 1rem 2rem;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.6rem;
+        }
+
+        nav {
+            margin-top: 0.8rem;
         }
 
         nav a {
@@ -24,6 +34,10 @@
             font-weight: bold;
         }
 
+        nav a:hover {
+            text-decoration: underline;
+        }
+
         .container {
             width: 85%;
             max-width: 1000px;
@@ -31,7 +45,7 @@
             background-color: white;
             padding: 2rem;
             border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
 
         .card {
@@ -49,6 +63,13 @@
             text-decoration: none;
             padding: 0.6rem 1rem;
             border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .btn:hover {
+            background-color: #163841;
         }
 
         .badge {
@@ -57,6 +78,15 @@
             border-radius: 5px;
             background-color: #e8eef0;
             font-size: 0.9rem;
+            margin-left: 0.3rem;
+        }
+
+        footer {
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+            padding: 1rem;
+            margin-top: 2rem;
         }
 
         form p {
@@ -65,25 +95,52 @@
 
         input, select, textarea {
             width: 100%;
+            max-width: 100%;
             padding: 0.6rem;
             margin-top: 0.3rem;
             border: 1px solid #ccc;
             border-radius: 6px;
             box-sizing: border-box;
         }
+
+        textarea {
+            min-height: 100px;
+        }
+
+        ul {
+            padding-left: 1.2rem;
+        }
+
+        .meta {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .section-title {
+            margin-top: 0;
+            color: #204b57;
+        }
     </style>
 </head>
 <body>
-    <nav>
-        <a href="/">Home</a>
-        <a href="/species/">Species</a>
-        <a href="/observations/">Observations</a>
-        <a href="/anomalies/">Anomalies</a>
-    </nav>
+    <header>
+        <h1>NT Fauna Recordings</h1>
+        <nav>
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'species-list' %}">Species</a>
+            <a href="{% url 'observation-list' %}">Observations</a>
+            <a href="{% url 'anomaly-list' %}">Anomalies</a>
+            <a href="{% url 'anomaly-create' %}">Report Anomaly</a>
+        </nav>
+    </header>
 
-    <div class="container">
+    <main class="container">
         {% block content %}
         {% endblock %}
-    </div>
+    </main>
+
+    <footer>
+        <p>Listening to NT’s Disappearing Animals</p>
+    </footer>
 </body>
 </html>
