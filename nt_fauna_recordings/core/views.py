@@ -1,8 +1,12 @@
+from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView
 from django.urls import reverse_lazy
 
 from .models import Species, Observation, Anomaly
 
+
+def home(request):
+    return render(request, "core/home.html")
 
 # -------------------------
 # Species Views
@@ -35,6 +39,12 @@ class ObservationDetailView(DetailView):
     template_name = "core/observation_detail.html"
     context_object_name = "observation"
 
+
+class ObservationCreateView(CreateView):
+    model = Observation
+    template_name = "core/observation_form.html"
+    fields = ["species", "observer", "audio_file", "location", "confidence_score", "notes"]
+    success_url = reverse_lazy("observation-list")
 
 # -------------------------
 # Anomaly Views
