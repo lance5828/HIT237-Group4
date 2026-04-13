@@ -15,8 +15,8 @@ urlpatterns = [
     path("observations/<int:pk>/", ObservationDetailView.as_view(), name="observation-detail"),
 
     # Anomalies
-    path("anomalies/", views.AnomalyListView.as_view(), name="anomaly-list"),
-    path("anomalies/<int:pk>/", views.AnomalyDetailView.as_view(), name="anomaly-detail"),
-    path("anomalies/create/", views.AnomalyCreateView.as_view(), name="anomaly-create"),
+    path("anomalies/", AnomalyListView.as_view(), name="anomaly-list"),
+    path("anomalies/<int:pk>/", AnomalyDetailView.as_view(), name="anomaly-detail"),
+    path("anomalies/create/", AnomalyCreateView.as_view(), name="anomaly-create"),
 ]
 
