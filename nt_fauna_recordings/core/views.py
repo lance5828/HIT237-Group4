@@ -35,7 +35,12 @@ class ObservationDetailView(DetailView):
     template_name = "core/observation_detail.html"
     context_object_name = "observation"
 
-
+class ObservationCreateView(CreateView):
+    model = Observation
+    template_name = "core/observation_form.html"
+    fields = ["species", "observer", "audio_file", "location", "confidence_score", "notes"]
+    success_url = reverse_lazy("observation-list")
+    
 # -------------------------
 # Anomaly Views
 # -------------------------
