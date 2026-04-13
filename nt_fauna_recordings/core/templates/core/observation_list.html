@@ -1,0 +1,21 @@
+{% extends "core/base.html" %}
+
+{% block title %}Observations{% endblock %}
+
+{% block content %}
+<h1>Observations</h1>
+
+{% for observation in observations %}
+    <div class="card">
+        <h2>{{ observation.species.common_name }}</h2>
+        <p><em>{{ observation.species.scientific_name }}</em></p>
+        <p><strong>Location:</strong> {{ observation.location }}</p>
+        <p><strong>Confidence Score:</strong> {{ observation.confidence_score }} / 10</p>
+        <p><strong>Confidence Label:</strong> {{ observation.confidence_label }}</p>
+        <p><strong>Observer:</strong> {{ observation.observer.username }}</p>
+        <a href="{% url 'observation-detail' observation.pk %}" class="btn">View Details</a>
+    </div>
+{% empty %}
+    <p>No observations found.</p>
+{% endfor %}
+{% endblock %}

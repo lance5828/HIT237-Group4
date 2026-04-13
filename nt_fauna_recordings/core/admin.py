@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Observation, Species
+from .models import Observation, Species, Anomaly
 
 
 @admin.register(Species)
@@ -35,3 +35,23 @@ class ObservationAdmin(admin.ModelAdmin):
 
     def get_queryset(self, request):
         return super().get_queryset(request).select_related("species", "observer")
+
+
+@admin.register(Anomaly)
+class AnomalyAdmin(admin.ModelAdmin):
+    list_display = (
+        "observation",
+        "flagged_by",
+        "severity",
+        "resolved",
+        "created_at",
+    )
+    list_filter = ("severity", "resolved", "created_at")
+    search_fields = ("observation__species__common_name", "reason")
+    ordering = ("-created_at",)
+    readonly_fields = ("created_at", "updated_at")
+
+    def get_queryset(self, request):
+        return super().get_queryset(request).select_related(
+            "observation", "flagged_by"
+        )

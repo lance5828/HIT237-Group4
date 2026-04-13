@@ -32,3 +32,25 @@ class ObservationQuerySet(models.QuerySet):
 
     def with_notes(self):
         return self.exclude(notes__exact="").exclude(notes__isnull=True)
+    
+class AnomalyQuerySet(models.QuerySet):
+
+    def unresolved(self):
+        return self.filter(resolved=False)
+
+    def resolved(self):
+        return self.filter(resolved=True)
+
+    def critical(self):
+        return self.filter(severity="HI", resolved=False)
+
+    def for_observation(self, observation):
+        return self.filter(observation=observation)
+
+    def by_severity(self, severity: str):
+        return self.filter(severity__iexact=severity)
+
+    def recent(self):
+        return self.select_related(
+            "observation", "flagged_by"
+        ).order_by("-created_at")

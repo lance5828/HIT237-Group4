@@ -2,7 +2,8 @@ from django.conf import settings
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
-from .managers import ObservationQuerySet, SpeciesQuerySet
+from .managers import ObservationQuerySet, SpeciesQuerySet, AnomalyQuerySet
+
 
 
 class TimeStampedModel(models.Model):
@@ -97,3 +98,47 @@ class Observation(TimeStampedModel):
         elif self.confidence_score >= 5:
             return "Moderate"
         return "Low"
+    
+    
+class Anomaly(TimeStampedModel):
+
+    class Severity(models.TextChoices):
+        LOW = "LO", "Low"
+        MEDIUM = "ME", "Medium"
+        HIGH = "HI", "High"
+
+    observation = models.ForeignKey(
+        Observation,
+        on_delete=models.CASCADE,
+        related_name="anomalies",
+    )
+
+    flagged_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.PROTECT,
+        related_name="flagged_anomalies",
+    )
+
+    reason = models.TextField()
+
+    severity = models.CharField(
+        max_length=2,
+        choices=Severity.choices,
+        default=Severity.LOW,
+        db_index=True,
+    )
+
+    resolved = models.BooleanField(default=False)
+    resolved_notes = models.TextField(blank=True, default="")
+
+    objects = AnomalyQuerySet.as_manager()
+    
+    class Meta:
+        ordering = ["-created_at"]
+        verbose_name_plural = "Anomalies"
+
+    def __str__(self):
+        return f"Anomaly on {self.observation} [{self.get_severity_display()}]"
+
+    def is_critical(self):
+        return self.severity == self.Severity.HIGH and not self.resolved

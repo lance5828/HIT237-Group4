@@ -1,0 +1,17 @@
+{% extends "core/base.html" %}
+
+{% block title %}Species Detail{% endblock %}
+
+{% block content %}
+<h1>{{ species.common_name }}</h1>
+
+<div class="card">
+    <p><strong>Scientific Name:</strong> {{ species.scientific_name }}</p>
+    <p><strong>Category:</strong> {{ species.category }}</p>
+    <p><strong>NT Classification:</strong> {{ species.classification_badge }}</p>
+    <p><strong>EPBC Classification:</strong> {{ species.epbc_classification }}</p>
+    <p><strong>Order:</strong> {{ species.order_name }}</p>
+    <p><strong>Family:</strong> {{ species.family }}</p>
+    <p><strong>Introduced Status:</strong> {{ species.introduced_status }}</p>
+</div>
+{% endblock %}

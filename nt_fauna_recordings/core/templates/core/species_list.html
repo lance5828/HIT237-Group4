@@ -1,0 +1,19 @@
+{% extends "core/base.html" %}
+
+{% block title %}Species{% endblock %}
+
+{% block content %}
+<h1>Threatened Species</h1>
+
+{% for species in species_list %}
+    <div class="card">
+        <h2>{{ species.common_name }}</h2>
+        <p><em>{{ species.scientific_name }}</em></p>
+        <p><strong>Category:</strong> {{ species.category }}</p>
+        <p><strong>Classification:</strong> <span class="badge">{{ species.classification_badge }}</span></p>
+        <a href="{% url 'species-detail' species.pk %}" class="btn">View Details</a>
+    </div>
+{% empty %}
+    <p>No species found.</p>
+{% endfor %}
+{% endblock %}
