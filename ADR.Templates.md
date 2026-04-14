@@ -25,9 +25,10 @@ Use static navigation without highlighting - *Pro:* simpler implementation. *Con
 - Set the species list page as the system entry point (`/`) instead of creating a separate homepage, allowing users to directly access the main functionality of the system.
 
 *** Code Reference ***
-- `core/templates/core/base.html` — base layout and navigation  
-- `core/templates/core/*.html` — list, detail, and form templates  
-- `nt_fauna_recordings/urls.py` — root URL mapped to species list
+- `core/templates/core/base.html: 8 - 158` - base layout
+- `core/templates/core/base.html: 159 - 174` - navigation and highlighting
+- `core/templates/core/species_list.html: 8 - 15` -  list rendering
+- `nt_fauna_recordings/urls.py` - root URL mapped to species list
 
 
 *** Consequences ***
