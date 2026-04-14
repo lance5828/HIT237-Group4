@@ -175,12 +175,6 @@
 
     <main class="container">
 
-    {% if request.path != '/' %}
-    <div style="margin-bottom: 1rem;">
-        <button onclick="history.back()" class="btn secondary">← Back</button>
-    </div>
-    {% endif %}
-
     {% block content %}
         {% endblock %}
     </main>
