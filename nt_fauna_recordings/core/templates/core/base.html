@@ -160,22 +160,20 @@
         <h1>NT Fauna Recordings</h1>
         <nav>
             
-            <a href="{% url 'species-list' %}">Species</a>
-            <a href="{% url 'observation-list' %}">Observations</a>
-            <a href="{% url 'observation-create' %}">Record Observation</a>
-            <a href="{% url 'anomaly-list' %}">Anomalies</a>
-            <a href="{% url 'anomaly-create' %}">Report Anomaly</a>
+            <a href="{% url 'species-list' %}" class="{% if '/species/' in request.path or request.path == '/' %}active{% endif %}">Species</a>
+
+            <a href="{% url 'observation-list' %}" class="{% if '/observations/' in request.path and request.path != '/observations/create/' %}active{% endif %}">Observations</a>
+
+            <a href="{% url 'observation-create' %}" class="{% if request.path == '/observations/create/' %}active{% endif %}">Add Observation</a>
+
+            <a href="{% url 'anomaly-list' %}" class="{% if '/anomalies/' in request.path and request.path != '/anomalies/create/' %}active{% endif %}">Anomalies</a>
+
+             <a href="{% url 'anomaly-create' %}" class="{% if request.path == '/anomalies/create/' %}active{% endif %}">Report Anomaly</a>
             
         </nav>
     </header>
 
     <main class="container">
-
-    {% if request.path != '/' %}
-    <div style="margin-bottom: 1rem;">
-        <button onclick="history.back()" class="btn secondary">← Back</button>
-    </div>
-    {% endif %}
 
     {% block content %}
         {% endblock %}
