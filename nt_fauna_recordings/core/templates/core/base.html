@@ -177,6 +177,25 @@
 
     {% block content %}
         {% endblock %}
+    {% if is_paginated %}
+<div style="margin-top: 2rem; text-align: center;">
+
+    {% if page_obj.has_previous %}
+        <a class="btn secondary" href="?page=1{% if request.GET.urlencode %}&{{ request.GET.urlencode }}{% endif %}">First</a>
+        <a class="btn secondary" href="?page={{ page_obj.previous_page_number }}{% if request.GET.urlencode %}&{{ request.GET.urlencode }}{% endif %}">Previous</a>
+    {% endif %}
+
+    <span class="badge">
+        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+    </span>
+
+    {% if page_obj.has_next %}
+        <a class="btn secondary" href="?page={{ page_obj.next_page_number }}{% if request.GET.urlencode %}&{{ request.GET.urlencode }}{% endif %}">Next</a>
+        <a class="btn secondary" href="?page={{ page_obj.paginator.num_pages }}{% if request.GET.urlencode %}&{{ request.GET.urlencode }}{% endif %}">Last</a>
+    {% endif %}
+
+</div>
+{% endif %}
     </main>
 
     <footer>

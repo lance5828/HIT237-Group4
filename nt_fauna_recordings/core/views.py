@@ -21,7 +21,7 @@ class SpeciesListView(ListView):
     model = Species
     template_name = "core/species_list.html"
     context_object_name = "species_list"
-
+    paginate_by = 10
 
 class SpeciesDetailView(DetailView):
     """
@@ -35,7 +35,7 @@ class SpeciesDetailView(DetailView):
     model = Species
     template_name = "core/species_detail.html"
     context_object_name = "species"
-
+    
 
 # -------------------------
 # Observation Views
@@ -53,7 +53,7 @@ class ObservationListView(ListView):
     model = Observation
     template_name = "core/observation_list.html"
     context_object_name = "observations"
-
+    paginate_by = 10
 
 class ObservationDetailView(DetailView):
     """
@@ -105,7 +105,7 @@ class AnomalyListView(ListView):
     model = Anomaly
     template_name = "core/anomaly_list.html"
     context_object_name = "anomalies"
-
+    paginate_by = 10
 
 class AnomalyDetailView(DetailView):
     """
