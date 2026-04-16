@@ -60,13 +60,13 @@ class Observation(TimeStampedModel):
     species = models.ForeignKey(
         Species,
         on_delete=models.PROTECT,
-        related_name="observations",
+        related_name="observations", 
     )
 
     observer = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.PROTECT,
-        related_name="observations",
+        related_name="observations_made",   
     )
 
     audio_file = models.FileField(upload_to="observations/audio/%Y/%m/")
