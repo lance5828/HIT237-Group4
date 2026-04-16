@@ -2,10 +2,12 @@
 
 *** Title ***
 Models used
-
+Selection of Function-based Views for Django Views Approach
 *** Status ***
+Accepted
 
 *** Context ***
+
 
 *** Decision ***
 
