@@ -15,7 +15,7 @@ Hence, the Views layer of the application would need to:
 - Let users create new records using form submissions
 - Support a scalable and reusable web application structure for future developments
 
-Due to all the reasons listed above, we needed to approach the Views structure in a way that reinforces the repetitive nature of viewing, listing, and creating different objects.
+Due to all the reasons listed above, we needed to approach the Views structure in a way that reinforces the repetitive nature of viewing, listing, updating, deleting and creating different objects.
 
 *** Decision ***
 In this website, we have used Django Class-Based Views (CBVs). In order to execute our application's view layer, we primarily used generic views such as ListView, DetailView, and CreateView.
@@ -27,7 +27,8 @@ Breakdown of the implementation of our choices:
 - template_name: This is used to map each View implemented with its corresponding HTML template
 - context_object_name: This is used to use simple and meaningful variable names in the templates
 - reverse_lazy: This is used for a safe URL redirection after submitting forms successfully
-
+- UpdateView: This allows updating records in the existing system by the use of form-based editing
+- DeleteView: This allows the users to delete records in the existing system and has a confirmation step before doing that
 By following this approach, we followed Django's Model-View-Template (MVT) architecture. This decreases repetitive code and makes the code easy to interpret.
 
 *** Code Reference ***
@@ -50,7 +51,7 @@ Positive consequences:
 - It also improves consistency across all the views in our application
 - It is good for scalability for larger applications
 - It reduces boilerplate code by using the generic views 
-- common patterns such as lists, detail, and create are simplified
+- common patterns such as lists, detail, update, delete and create are simplified
 
 Negative consequences:
 - It is less flexible to use for highly customized logic if we don't extend the base classes

@@ -143,23 +143,57 @@ class AnomalyCreateView(CreateView):
     success_url = reverse_lazy("anomaly-list")
 
 class ObservationUpdateView(UpdateView):
+    """
+    Handling the updates to an existing observation record through a form submission.
+
+    Attributes:
+        model: The Observation model.
+        template_name: The template used to render the observation form (core/observation_form.html).
+        fields: The model fields exposed in the form.
+        success_url: The URL to redirect to after successful form submission.
+    """
     model = Observation
     template_name = "core/observation_form.html"  # reusing the same form
     fields = ["species", "observer", "audio_file", "location", "confidence_score", "notes"]
     success_url = reverse_lazy("observation-list")
 
 class ObservationDeleteView(DeleteView):
+    """
+    Handling the deletion of an existing observation record with a confirmation step.
+
+    Attributes:
+        model: The Observation model.
+        template_name: The template used to render the deletion confirmation page (core/observation_confirm_delete.html).
+        success_url: The URL to redirect to after successful deletion.
+    """
     model = Observation
     template_name = "core/observation_confirm_delete.html"
     success_url = reverse_lazy("observation-list")
 
 class AnomalyUpdateView(UpdateView):
+    """
+    Handling the updates to an existing anomaly record through a form submission.
+
+    Attributes:
+        model: The Anomaly model.
+        template_name: The template used to render the anomaly form (core/anomaly_form.html).
+        fields: The model fields exposed in the form.
+        success_url: The URL to redirect to after successful form submission.
+    """
     model = Anomaly
     template_name = "core/anomaly_form.html"  # reuse form
     fields = ["observation", "flagged_by", "reason", "severity"]
     success_url = reverse_lazy("anomaly-list")
 
 class AnomalyDeleteView(DeleteView):
+    """
+    Handling the deletion of an existing anomaly record with a confirmation step.
+
+    Attributes:
+        model: The Anomaly model.
+        template_name: The template used to render the deletion confirmation page (core/anomaly_confirm_delete.html).
+        success_url: The URL to redirect to after successful deletion.
+    """
     model = Anomaly
     template_name = "core/anomaly_confirm_delete.html"
     success_url = reverse_lazy("anomaly-list")
