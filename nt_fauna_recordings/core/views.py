@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
 from .models import Species, Observation, Anomaly
@@ -141,3 +141,26 @@ class AnomalyCreateView(CreateView):
     template_name = "core/anomaly_form.html"
     fields = ["observation", "flagged_by", "reason", "severity"]
     success_url = reverse_lazy("anomaly-list")
+
+class ObservationUpdateView(UpdateView):
+    model = Observation
+    template_name = "core/observation_form.html"  # reusing the same form
+    fields = ["species", "observer", "audio_file", "location", "confidence_score", "notes"]
+    success_url = reverse_lazy("observation-list")
+
+class ObservationDeleteView(DeleteView):
+    model = Observation
+    template_name = "core/observation_confirm_delete.html"
+    success_url = reverse_lazy("observation-list")
+
+class AnomalyUpdateView(UpdateView):
+    model = Anomaly
+    template_name = "core/anomaly_form.html"  # reuse form
+    fields = ["observation", "flagged_by", "reason", "severity"]
+    success_url = reverse_lazy("anomaly-list")
+
+class AnomalyDeleteView(DeleteView):
+    model = Anomaly
+    template_name = "core/anomaly_confirm_delete.html"
+    success_url = reverse_lazy("anomaly-list")
+

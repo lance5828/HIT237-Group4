@@ -20,4 +20,11 @@
         <p><strong>Status:</strong> Critical unresolved anomaly</p>
     {% endif %}
 </div>
+
+<hr>
+
+<div class="actions">
+    <a href="{% url 'anomaly-edit' anomaly.pk %}">✏️ Edit</a>
+    <a href="{% url 'anomaly-delete' anomaly.pk %}">🗑️ Delete</a>
+</div>
 {% endblock %}
