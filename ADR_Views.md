@@ -29,12 +29,15 @@ Breakdown of the implementation of our choices:
 - reverse_lazy: This is used for a safe URL redirection after submitting forms successfully
 - UpdateView: This allows updating records in the existing system by the use of form-based editing
 - DeleteView: This allows the users to delete records in the existing system and has a confirmation step before doing that
+
 By following this approach, we followed Django's Model-View-Template (MVT) architecture. This decreases repetitive code and makes the code easy to interpret.
 
 *** Code Reference ***
-`nt_fauna_recordings/core/views.py`
+`nt_fauna_recordings/core/views.py` - Class-Based Views
+`nt_fauna_recordings/core/urls.py` - Path
 
 *** Alternatives Considered ***
+
 #1 Function-Based Views (FBVs) - (Rejected)
 Advantages:
 - They are Simple and easy.
@@ -44,16 +47,25 @@ Disadvantages:
 - It is difficult to maintain consistency across multiple views
 - Hard to scale for larger applications
 
+#2 Django REST Framework (DRF) with API Views - (Rejected)
+Advantages:
+- This is a really useful toolkit for building APIs which can be used for frontend framework or mobile clients
+- Data can be presented in a structured format since there is in-built support for authentication, serialization and permissions
+- It offers flexibility since it provides support for both function-based and class-based API views
+Disadvantages:
+- It is more complex due to need of an extra frontend layer or API client to interact with data
+- We want to focus on the MVT architecture in Django, and DRF differs from it
+- DRF introduces additional dependencies that would be unnecessary for a server-rendered application system 
 *** Consequences ***
 
-Positive consequences:
+*** Positive consequences of Class-Based Views: ***
 - CBVs integrate seamlessly with Django templates and make the system easy to use
 - It also improves consistency across all the views in our application
 - It is good for scalability for larger applications
 - It reduces boilerplate code by using the generic views 
 - common patterns such as lists, detail, update, delete and create are simplified
 
-Negative consequences:
+*** Negative consequences: ***
 - It is less flexible to use for highly customized logic if we don't extend the base classes
 - It requires a good understanding of class inheritance and method overriding
 - More things need to be learned or considered compared to function-based views
