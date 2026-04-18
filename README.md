@@ -63,6 +63,10 @@ The cleaned dataset is stored in: dataset/nt_species_threatened_cleaned.xlsx
 ### 5. Create a superuser
 - python manage.py createsuperuser
 
+### 6. Run server
+- python manage.py runserver
+
+
 
 
 

@@ -22,4 +22,11 @@
         <p><strong>Notes:</strong> {{ observation.notes }}</p>
     {% endif %}
 </div>
+
+<hr>
+
+<div class="actions">
+    <a href="{% url 'observation-edit' observation.pk %}">✏️ Edit</a>
+    <a href="{% url 'observation-delete' observation.pk %}">🗑️ Delete</a>
+</div>
 {% endblock %}
