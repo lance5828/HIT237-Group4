@@ -182,7 +182,7 @@ class AnomalyUpdateView(UpdateView):
     """
     model = Anomaly
     template_name = "core/anomaly_form.html"  # reuse form
-    fields = ["observation", "flagged_by", "reason", "severity"]
+    fields = ["observation", "flagged_by", "reason", "severity","resolved", "resolved_notes"]
     success_url = reverse_lazy("anomaly-list")
 
 class AnomalyDeleteView(DeleteView):
