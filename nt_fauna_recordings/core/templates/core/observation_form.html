@@ -3,7 +3,13 @@
 {% block title %}Record Observation{% endblock %}
 
 {% block content %}
-<h1>Record Observation</h1>
+<h1>
+    {% if form.instance.pk %}
+        Edit Observation
+    {% else %}
+        Record Observation
+    {% endif %}
+</h1>
 
 <div class="card">
     <form method="post" enctype="multipart/form-data">
