@@ -21,7 +21,7 @@ class SpeciesListView(ListView):
     model = Species
     template_name = "core/species_list.html"
     context_object_name = "species_list"
-    paginate_by = 10
+    paginate_by = 7
 
 class SpeciesDetailView(DetailView):
     """
