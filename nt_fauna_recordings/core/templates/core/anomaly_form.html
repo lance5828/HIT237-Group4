@@ -3,7 +3,7 @@
 {% block title %}Report Anomaly{% endblock %}
 
 {% block content %}
-<h1>Report Anomaly</h1>
+<h1>{% if form.instance.pk %}Edit Anomaly{% else %}Report Anomaly{% endif %}</h1>
 
 <form method="post">
     {% csrf_token %}
