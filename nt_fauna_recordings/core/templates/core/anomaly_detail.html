@@ -1,7 +1,7 @@
 {% extends "core/base.html" %}
-
-{% block title %}Anomaly Detail{% endblock %}
-
+{% block title %}
+Anomaly Detail
+{% endblock %}
 {% block content %}
 <h1>Anomaly Detail</h1>
 
@@ -10,7 +10,7 @@
     <p><strong>Flagged By:</strong> {{ anomaly.flagged_by.username }}</p>
     <p><strong>Reason:</strong> {{ anomaly.reason }}</p>
     <p><strong>Severity:</strong> {{ anomaly.get_severity_display }}</p>
-    <p><strong>Resolved:</strong> {{ anomaly.resolved }}</p>
+    <p><strong>Resolved:</strong> {% if anomaly.resolved %}Yes{% else %}No{% endif %}</p>
 
     {% if anomaly.resolved_notes %}
         <p><strong>Resolved Notes:</strong> {{ anomaly.resolved_notes }}</p>
