@@ -5,9 +5,21 @@
 
 <p>Are you sure you want to delete this anomaly?</p>
 
-<form method="post">
+<form method="post" style="margin-top: 1rem;">
     {% csrf_token %}
-    <button type="submit">Yes, delete</button>
-    <a href="{% url 'anomaly-detail' object.pk %}">Cancel</a>
+
+    <button type="submit"
+        style="display:inline-block; padding:8px 14px; margin-right:10px;
+               background-color:#c0392b; color:white; border:none;
+               border-radius:6px; cursor:pointer; font-size:14px;">
+        Delete
+    </button>
+
+    <a href="{% url 'anomaly-detail' object.pk %}"
+       style="display:inline-block; padding:8px 14px;
+              background-color:#17336f; color:white; text-decoration:none;
+              border-radius:6px; font-size:14px;">
+        Cancel
+    </a>
 </form>
 {% endblock %}
