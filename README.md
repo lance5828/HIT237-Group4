@@ -53,16 +53,16 @@ The cleaned dataset is stored in: dataset/nt_species_threatened_cleaned.xlsx
 ### 3. Install dependencies
 - pip install -r requirements.txt (from the root folder)
 
-### 4. Run the import command
-- python manage.py import_species ../dataset/nt_species_threatened_cleaned.xlsx
-
 ### 4. Apply migrations
 - python manage.py migrate
 
-### 5. Create a superuser
+### 5. Run the import command
+- python manage.py import_species ../dataset/nt_species_threatened_cleaned.xlsx
+
+### 6. Create a superuser
 - python manage.py createsuperuser
 
-### 6. Run server
+### 7. Run server
 - python manage.py runserver
 
 
