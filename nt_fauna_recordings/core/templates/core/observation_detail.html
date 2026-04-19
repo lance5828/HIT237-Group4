@@ -25,8 +25,20 @@
 
 <hr>
 
-<div class="actions">
-    <a href="{% url 'observation-edit' observation.pk %}">✏️ Edit</a>
-    <a href="{% url 'observation-delete' observation.pk %}">🗑️ Delete</a>
+<div class="actions" style="margin-top: 1rem;">
+    <a href="{% url 'observation-edit' observation.pk %}"
+       style="display:inline-block; padding:8px 14px; margin-right:10px; 
+              background-color:#204b57; color:white; text-decoration:none; 
+              border-radius:6px; font-size:14px;">
+        Edit
+    </a>
+
+    <a href="{% url 'observation-delete' observation.pk %}"
+       style="display:inline-block; padding:8px 14px; 
+              background-color:#c0392b; color:white; text-decoration:none; 
+              border-radius:6px; font-size:14px;">
+        Delete
+    </a>
 </div>
+
 {% endblock %}
