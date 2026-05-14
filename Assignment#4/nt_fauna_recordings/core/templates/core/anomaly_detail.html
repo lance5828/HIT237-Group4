@@ -1,0 +1,42 @@
+{% extends "core/base.html" %}
+{% block title %}
+Anomaly Detail
+{% endblock %}
+{% block content %}
+<h1>Anomaly Detail</h1>
+
+<div class="card">
+    <p><strong>Observation:</strong> {{ anomaly.observation }}</p>
+    <p><strong>Flagged By:</strong> {{ anomaly.flagged_by.username }}</p>
+    <p><strong>Reason:</strong> {{ anomaly.reason }}</p>
+    <p><strong>Severity:</strong> {{ anomaly.get_severity_display }}</p>
+    <p><strong>Resolved:</strong> {% if anomaly.resolved %}Yes{% else %}No{% endif %}</p>
+
+    {% if anomaly.resolved_notes %}
+        <p><strong>Resolved Notes:</strong> {{ anomaly.resolved_notes }}</p>
+    {% endif %}
+
+    {% if anomaly.is_critical %}
+        <p><strong>Status:</strong> Critical unresolved anomaly</p>
+    {% endif %}
+</div>
+
+<hr>
+
+<div class="actions" style="margin-top: 1rem;">
+    <a href="{% url 'anomaly-edit' anomaly.pk %}"
+       style="display:inline-block; padding:8px 14px; margin-right:10px; 
+              background-color:#204b57; color:white; text-decoration:none; 
+              border-radius:6px; font-size:14px;">
+        Edit
+    </a>
+
+    <a href="{% url 'anomaly-delete' anomaly.pk %}"
+       style="display:inline-block; padding:8px 14px; 
+              background-color:#c0392b; color:white; text-decoration:none; 
+              border-radius:6px; font-size:14px;">
+        Delete
+    </a>
+</div>
+
+{% endblock %}

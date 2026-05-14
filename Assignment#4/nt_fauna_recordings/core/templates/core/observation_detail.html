@@ -1,0 +1,44 @@
+{% extends "core/base.html" %}
+
+{% block title %}Observation Detail{% endblock %}
+
+{% block content %}
+<h1>{{ observation.species.common_name }}</h1>
+
+<div class="card">
+    <p><strong>Scientific Name:</strong> {{ observation.species.scientific_name }}</p>
+    <p><strong>Location:</strong> {{ observation.location }}</p>
+    <p><strong>Observer:</strong> {{ observation.observer.username }}</p>
+    <p><strong>Confidence Score:</strong> {{ observation.confidence_score }} / 10</p>
+    <p><strong>Confidence Label:</strong> {{ observation.confidence_label }}</p>
+    <p><strong>Created At:</strong> {{ observation.created_at }}</p>
+    <p><strong>Updated At:</strong> {{ observation.updated_at }}</p>
+
+    {% if observation.audio_file %}
+        <p><strong>Audio File:</strong> <a href="{{ observation.audio_file.url }}">Open Audio</a></p>
+    {% endif %}
+
+    {% if observation.has_notes %}
+        <p><strong>Notes:</strong> {{ observation.notes }}</p>
+    {% endif %}
+</div>
+
+<hr>
+
+<div class="actions" style="margin-top: 1rem;">
+    <a href="{% url 'observation-edit' observation.pk %}"
+       style="display:inline-block; padding:8px 14px; margin-right:10px; 
+              background-color:#204b57; color:white; text-decoration:none; 
+              border-radius:6px; font-size:14px;">
+        Edit
+    </a>
+
+    <a href="{% url 'observation-delete' observation.pk %}"
+       style="display:inline-block; padding:8px 14px; 
+              background-color:#c0392b; color:white; text-decoration:none; 
+              border-radius:6px; font-size:14px;">
+        Delete
+    </a>
+</div>
+
+{% endblock %}

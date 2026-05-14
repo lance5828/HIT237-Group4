@@ -1,0 +1,21 @@
+{% extends "core/base.html" %}
+
+{% block title %}Record Observation{% endblock %}
+
+{% block content %}
+<h1>
+    {% if form.instance.pk %}
+        Edit Observation
+    {% else %}
+        Record Observation
+    {% endif %}
+</h1>
+
+<div class="card">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn">Save Observation</button>
+    </form>
+</div>
+{% endblock %}
