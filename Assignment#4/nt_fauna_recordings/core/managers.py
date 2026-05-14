@@ -19,6 +19,12 @@ class SpeciesQuerySet(models.QuerySet):
             | models.Q(scientific_name__icontains=term)
         )
 
+    def homepage(self):
+        return self.threatened().ordered_for_homepage()
+
+    def detail_page(self):
+        return self.all()
+
 
 class ObservationQuerySet(models.QuerySet):
     def recent(self):
@@ -32,9 +38,18 @@ class ObservationQuerySet(models.QuerySet):
 
     def with_notes(self):
         return self.exclude(notes__exact="").exclude(notes__isnull=True)
-    
-class AnomalyQuerySet(models.QuerySet):
 
+    def list_page(self):
+        return self.recent()
+
+    def detail_page(self):
+        return self.select_related("species", "observer")
+
+    def form_page(self):
+        return self.select_related("species", "observer")
+
+
+class AnomalyQuerySet(models.QuerySet):
     def unresolved(self):
         return self.filter(resolved=False)
 
@@ -52,5 +67,17 @@ class AnomalyQuerySet(models.QuerySet):
 
     def recent(self):
         return self.select_related(
-            "observation", "flagged_by"
+            "observation",
+            "observation__species",
+            "observation__observer",
+            "flagged_by",
         ).order_by("-created_at")
+
+    def list_page(self):
+        return self.recent()
+
+    def detail_page(self):
+        return self.recent()
+
+    def form_page(self):
+        return self.recent()
