@@ -1,12 +1,12 @@
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
+from .exceptions import ObservationCreateError, AnomalyFlagError
+from .forms import ObservationCreateForm, AnomalyCreateForm
 from .models import Species, Observation, Anomaly
+from .services import create_observation, flag_anomaly
 
-
-# -------------------------
-# Species Views
-# -------------------------
 
 class SpeciesListView(ListView):
     model = Species
@@ -22,10 +22,6 @@ class SpeciesDetailView(DetailView):
     context_object_name = "species"
     queryset = Species.objects.detail_page()
 
-
-# -------------------------
-# Observation Views
-# -------------------------
 
 class ObservationListView(ListView):
     model = Observation
@@ -44,15 +40,23 @@ class ObservationDetailView(DetailView):
 
 class ObservationCreateView(CreateView):
     model = Observation
+    form_class = ObservationCreateForm
     template_name = "core/observation_form.html"
-    fields = ["species", "observer", "audio_file", "location", "confidence_score", "notes"]
     success_url = reverse_lazy("observation-list")
+
+    def form_valid(self, form):
+        try:
+            create_observation(user=self.request.user, **form.cleaned_data)
+            return redirect(self.success_url)
+        except ObservationCreateError as error:
+            form.add_error(None, str(error))
+            return self.form_invalid(form)
 
 
 class ObservationUpdateView(UpdateView):
     model = Observation
     template_name = "core/observation_form.html"
-    fields = ["species", "observer", "audio_file", "location", "confidence_score", "notes"]
+    fields = ["species", "audio_file", "location", "confidence_score", "notes"]
     success_url = reverse_lazy("observation-list")
     queryset = Observation.objects.form_page()
 
@@ -63,10 +67,6 @@ class ObservationDeleteView(DeleteView):
     success_url = reverse_lazy("observation-list")
     queryset = Observation.objects.form_page()
 
-
-# -------------------------
-# Anomaly Views
-# -------------------------
 
 class AnomalyListView(ListView):
     model = Anomaly
@@ -85,15 +85,23 @@ class AnomalyDetailView(DetailView):
 
 class AnomalyCreateView(CreateView):
     model = Anomaly
+    form_class = AnomalyCreateForm
     template_name = "core/anomaly_form.html"
-    fields = ["observation", "flagged_by", "reason", "severity"]
     success_url = reverse_lazy("anomaly-list")
+
+    def form_valid(self, form):
+        try:
+            flag_anomaly(user=self.request.user, **form.cleaned_data)
+            return redirect(self.success_url)
+        except AnomalyFlagError as error:
+            form.add_error(None, str(error))
+            return self.form_invalid(form)
 
 
 class AnomalyUpdateView(UpdateView):
     model = Anomaly
     template_name = "core/anomaly_form.html"
-    fields = ["observation", "flagged_by", "reason", "severity", "resolved", "resolved_notes"]
+    fields = ["observation", "reason", "severity", "resolved", "resolved_notes"]
     success_url = reverse_lazy("anomaly-list")
     queryset = Anomaly.objects.form_page()
 
