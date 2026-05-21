@@ -157,21 +157,49 @@
 </head>
 <body>
     <header>
-        <h1>NT Fauna Recordings</h1>
-        <nav>
-            
-            <a href="{% url 'species-list' %}" class="{% if '/species/' in request.path or request.path == '/' %}active{% endif %}">Species</a>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h1 style="margin: 0; font-size: 1.8rem;">NT Fauna Recordings</h1>
 
-            <a href="{% url 'observation-list' %}" class="{% if '/observations/' in request.path and request.path != '/observations/create/' %}active{% endif %}">Observations</a>
+        {% if user.is_authenticated %}
+        <div style="display: flex; align-items: center; gap: 0.8rem;">
+            <span style="color: rgba(255,255,255,0.75); font-size: 0.9rem;">
+                Hi, {{ user.username }}
+            </span>
+            <form method="post" action="{% url 'accounts:logout' %}" style="display: inline; margin: 0;">
+                {% csrf_token %}
+                <button type="submit"
+                        style="background: none; border: 1px solid rgba(255,255,255,0.5);
+                               color: white; padding: 0.4rem 0.8rem; border-radius: 6px;
+                               cursor: pointer; font-weight: bold; font-size: 0.9rem;">
+                    Logout
+                </button>
+            </form>
+        </div>
+        {% else %}
+        <div style="display: flex; gap: 0.8rem;">
+            <a href="{% url 'accounts:login' %}"
+               class="{% if '/accounts/login' in request.path %}active{% endif %}">
+                Login
+            </a>
+            <a href="{% url 'accounts:signup' %}"
+               class="{% if '/accounts/signup' in request.path %}active{% endif %}">
+                Register
+            </a>
+        </div>
+        {% endif %}
+    </div>
 
-            <a href="{% url 'observation-create' %}" class="{% if request.path == '/observations/create/' %}active{% endif %}">Add Observation</a>
+    {% if user.is_authenticated %}
+    <nav style="margin-top: 0.8rem; display: flex; flex-wrap: wrap; gap: 0.8rem;">
+        <a href="{% url 'species-list' %}" class="{% if '/species/' in request.path or request.path == '/' %}active{% endif %}">Species</a>
+        <a href="{% url 'observation-list' %}" class="{% if '/observations/' in request.path and request.path != '/observations/create/' %}active{% endif %}">Observations</a>
+        <a href="{% url 'observation-create' %}" class="{% if request.path == '/observations/create/' %}active{% endif %}">Add Observation</a>
+        <a href="{% url 'anomaly-list' %}" class="{% if '/anomalies/' in request.path and request.path != '/anomalies/create/' %}active{% endif %}">Anomalies</a>
+        <a href="{% url 'anomaly-create' %}" class="{% if request.path == '/anomalies/create/' %}active{% endif %}">Report Anomaly</a>
+    </nav>
+    {% endif %}
 
-            <a href="{% url 'anomaly-list' %}" class="{% if '/anomalies/' in request.path and request.path != '/anomalies/create/' %}active{% endif %}">Anomalies</a>
-
-             <a href="{% url 'anomaly-create' %}" class="{% if request.path == '/anomalies/create/' %}active{% endif %}">Report Anomaly</a>
-            
-        </nav>
-    </header>
+</header>
 
     <main class="container">
 

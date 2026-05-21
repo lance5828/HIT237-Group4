@@ -23,6 +23,7 @@ from core.views import SpeciesListView
 urlpatterns = [
 
     path("admin/", admin.site.urls),
+    path("accounts/", include("accounts.urls")),
     path("", SpeciesListView.as_view(), name="home"),
     path("", include("core.urls")),
 ]
