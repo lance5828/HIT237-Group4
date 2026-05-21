@@ -178,11 +178,17 @@
         {% else %}
         <div style="display: flex; gap: 0.8rem;">
             <a href="{% url 'accounts:login' %}"
-               class="{% if '/accounts/login' in request.path %}active{% endif %}">
+               class="{% if '/accounts/login' in request.path %}active{% endif %}"
+               style="color: white; text-decoration: none; font-weight: bold;
+                      padding: 0.45rem 0.8rem; border-radius: 6px;
+                      background-color: rgba(255,255,255,0.1);">
                 Login
             </a>
             <a href="{% url 'accounts:signup' %}"
-               class="{% if '/accounts/signup' in request.path %}active{% endif %}">
+               class="{% if '/accounts/signup' in request.path %}active{% endif %}"
+               style="color: white; text-decoration: none; font-weight: bold;
+                      padding: 0.45rem 0.8rem; border-radius: 6px;
+                      background-color: rgba(255,255,255,0.1);">
                 Register
             </a>
         </div>
