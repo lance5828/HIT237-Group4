@@ -5,7 +5,7 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 
 def login_view(request):
     if request.user.is_authenticated:
-        return render(request, 'accounts/login.html')
+        return redirect('species-list')
 
     form = AuthenticationForm(request, data=request.POST or None)
     if request.method == 'POST' and form.is_valid():
@@ -18,14 +18,18 @@ def login_view(request):
 def logout_view(request):
     if request.method == 'POST':
         logout(request)
-        return render(request, 'accounts/logout.html')
+        return render(request, 'accounts/logout.html') # rendering the existing logout html
     return redirect('accounts:login')
 
 
 def signup_view(request):
+    if request.user.is_authenticated:
+        return redirect('species-list')
+    
     form = UserCreationForm(request.POST or None)
     if request.method == 'POST' and form.is_valid():
-        form.save()
-        return redirect('accounts:login')
+        user = form.save()
+        login(request, user)
+        return redirect('species-list')
 
     return render(request, 'accounts/signup.html', {'form': form})
