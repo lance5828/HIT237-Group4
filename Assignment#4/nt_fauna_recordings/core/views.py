@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -38,7 +39,7 @@ class ObservationDetailView(DetailView):
     queryset = Observation.objects.detail_page()
 
 
-class ObservationCreateView(CreateView):
+class ObservationCreateView(LoginRequiredMixin, CreateView):
     model = Observation
     form_class = ObservationCreateForm
     template_name = "core/observation_form.html"
@@ -83,7 +84,7 @@ class AnomalyDetailView(DetailView):
     queryset = Anomaly.objects.detail_page()
 
 
-class AnomalyCreateView(CreateView):
+class AnomalyCreateView(LoginRequiredMixin, CreateView):
     model = Anomaly
     form_class = AnomalyCreateForm
     template_name = "core/anomaly_form.html"
