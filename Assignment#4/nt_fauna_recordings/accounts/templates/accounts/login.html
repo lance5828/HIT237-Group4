@@ -74,6 +74,7 @@
 
     <form method="post" novalidate>
       {% csrf_token %}
+      <input type="hidden" name="next" value="{{ next }}">
 
       <p>
         <label for="{{ form.username.id_for_label }}"

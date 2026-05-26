@@ -1,25 +1,15 @@
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, logout
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 
+class UserLoginView(LoginView):
+    template_name = 'accounts/login.html'
+    next_page = 'species-list'
+    redirect_authenticated_user = True
 
-def login_view(request):
-    if request.user.is_authenticated:
-        return redirect('species-list')
-
-    form = AuthenticationForm(request, data=request.POST or None)
-    if request.method == 'POST' and form.is_valid():
-        login(request, form.get_user())
-        return redirect('species-list')
-
-    return render(request, 'accounts/login.html', {'form': form})
-
-
-def logout_view(request):
-    if request.method == 'POST':
-        logout(request)
-        return render(request, 'accounts/logout.html') # rendering the existing logout html
-    return redirect('accounts:login')
+class UserLogoutView(LogoutView):
+     template_name = 'accounts/logout.html'
 
 
 def signup_view(request):
