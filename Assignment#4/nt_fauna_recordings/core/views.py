@@ -54,7 +54,7 @@ class ObservationCreateView(LoginRequiredMixin, CreateView):
             return self.form_invalid(form)
 
 
-class ObservationUpdateView(UpdateView):
+class ObservationUpdateView(LoginRequiredMixin, UpdateView):
     model = Observation
     template_name = "core/observation_form.html"
     fields = ["species", "audio_file", "location", "confidence_score", "notes"]
@@ -62,7 +62,7 @@ class ObservationUpdateView(UpdateView):
     queryset = Observation.objects.form_page()
 
 
-class ObservationDeleteView(DeleteView):
+class ObservationDeleteView(LoginRequiredMixin, DeleteView):
     model = Observation
     template_name = "core/observation_confirm_delete.html"
     success_url = reverse_lazy("observation-list")
@@ -99,7 +99,7 @@ class AnomalyCreateView(LoginRequiredMixin, CreateView):
             return self.form_invalid(form)
 
 
-class AnomalyUpdateView(UpdateView):
+class AnomalyUpdateView(LoginRequiredMixin, UpdateView):
     model = Anomaly
     template_name = "core/anomaly_form.html"
     fields = ["observation", "reason", "severity", "resolved", "resolved_notes"]
@@ -107,7 +107,7 @@ class AnomalyUpdateView(UpdateView):
     queryset = Anomaly.objects.form_page()
 
 
-class AnomalyDeleteView(DeleteView):
+class AnomalyDeleteView(LoginRequiredMixin, DeleteView):
     model = Anomaly
     template_name = "core/anomaly_confirm_delete.html"
     success_url = reverse_lazy("anomaly-list")
