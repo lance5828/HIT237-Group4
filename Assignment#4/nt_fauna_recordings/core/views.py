@@ -13,7 +13,7 @@ class SpeciesListView(ListView):
     model = Species
     template_name = "core/species_list.html"
     context_object_name = "species_list"
-    paginate_by = 7
+    paginate_by = 5
     queryset = Species.objects.homepage()
 
 
@@ -28,7 +28,7 @@ class ObservationListView(ListView):
     model = Observation
     template_name = "core/observation_list.html"
     context_object_name = "observations"
-    paginate_by = 10
+    paginate_by = 12
     queryset = Observation.objects.list_page()
 
 
@@ -73,7 +73,7 @@ class AnomalyListView(ListView):
     model = Anomaly
     template_name = "core/anomaly_list.html"
     context_object_name = "anomalies"
-    paginate_by = 10
+    paginate_by = 12
     queryset = Anomaly.objects.list_page()
 
 
