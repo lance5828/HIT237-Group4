@@ -89,3 +89,7 @@ Since different members may work on different parts of the project, integration 
 - Major features will be merged through **GitHub commits and pull requests**.
 - The group will test the full application after merging new changes to ensure that the system still runs correctly.
 - Before each submission, the team will perform a final integration test to confirm that all features, documentation, and required files are included.
+
+
+## AI Declaration
+AI tools such as Github Copilot and ChatGPT have been used to write code for this application.
