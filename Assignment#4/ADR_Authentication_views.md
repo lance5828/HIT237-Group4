@@ -38,6 +38,9 @@ In a nutshell, the authentication for users was setup using CBVs since using Dja
 - Customizing 'UserLoginView' or 'UserLogoutView' beyond 'next_page' and 'template_name' would require overriding the CBV method which in turn would add to complexity.
 - At this stage 'UserCreationForm' only allows fundamental options like username and password which may require replacing later on with a custom form when the website is developed.
 
+Authentication Flow Diagram:
+[![Authentication flow](auth_flow.png)](auth_flow.png)
+
 ## ADR-005: Usage of LoginRequiredMixin in core/views.py for authentication
 
 Status: Accepted
