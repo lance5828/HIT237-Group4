@@ -146,10 +146,10 @@ The tests are grouped into model behaviour tests, QuerySet tests, service-layer 
 
 The updated suite was designed to verify meaningful business behaviour such as validation rules, service workflows, permission restrictions, filtering behaviour, and exception handling rather than only checking whether pages return successful responses.
 
-![Testing Coverage Diagram](Media/testing_coverage.png)
+![Testing Coverage Diagram](diagrams/testing_coverage.png)
 
 ## Test Result Evidence
 
-![Testing Result Diagram](Media/test_result.png)
+![Testing Result Diagram](diagrams/test_result.png)
 
 
