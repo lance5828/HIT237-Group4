@@ -46,4 +46,4 @@ The diagram below shows how the new service layer works during an observation cr
 
 This shows the main architectural change made in Assessment 4: the write workflow now moves through a dedicated service layer instead of being handled directly inside the view. If the request is valid, the service creates the record inside a transaction. If a business rule fails, the service raises a custom exception, and the view returns the user to the form with an error instead of allowing an unhandled server error.
 
-![Service Layer Sequence Diagram](Media/service_Layer_Sequence.png)
+![Service Layer Sequence Diagram](diagrams/service_Layer_Sequence.png)
